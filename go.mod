@@ -1,4 +1,4 @@
-module go-cdek-api
+module github.com/mzelenkin/go-cdekapi
 
 go 1.13
 
