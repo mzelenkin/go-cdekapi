@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-func (c Client) GetOffices(ctx context.Context, filter OfficesFilter) (*Offices, error) {
+func (c Client) GetOffices(ctx context.Context, filter OfficesFilter) ([]Office, error) {
 	resp, err := c.getRequest(ctx).
 		SetResult(&Offices{}).
 		SetQueryParams(filter.BuildQueryParams()).
@@ -21,7 +21,7 @@ func (c Client) GetOffices(ctx context.Context, filter OfficesFilter) (*Offices,
 	}
 
 	if ret, ok := resp.Result().(*Offices); ok {
-		return ret, nil
+		return ret.Offices, nil
 	}
 
 	return nil, errors.New("can't convert response to array of offices")

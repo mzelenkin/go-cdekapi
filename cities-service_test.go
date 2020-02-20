@@ -39,7 +39,7 @@ func TestClient_GetCities(t *testing.T) {
 		t.Error(err)
 	}
 
-	if reflect.DeepEqual(result, &want) == false {
+	if reflect.DeepEqual(result, want) == false {
 		t.Errorf("\nRESU: %#v\nWANT: %#v", result, &want)
 		t.Fail()
 	}
