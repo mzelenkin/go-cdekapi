@@ -7,15 +7,15 @@ import (
 	"time"
 )
 
-func (c Client) Calculator(ctx context.Context, request *CalculatorRequest) (CalculatorResult, error) {
+func (c Client) Calculator(ctx context.Context, request CalculatorRequest) (CalculatorResult, error) {
 
 	var ret CalculatorResult
 
-	request = c.calculatorPrepare(request)
+	req := c.calculatorPrepare(&request)
 	resp, err := c.getRequest(ctx).
 		SetResult(&CalculatorResponse{}).
 		SetError(&ErrorsApiV1{}).
-		SetBody(request).
+		SetBody(req).
 		Post(APICalculatorURL)
 
 	if err != nil {
