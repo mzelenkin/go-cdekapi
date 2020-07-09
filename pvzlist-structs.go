@@ -1,7 +1,7 @@
 package cdekapi
 
 type Offices struct {
-	Offices []Office `json:"pvz"`
+	Offices []Office
 }
 
 type Office struct {
@@ -16,7 +16,7 @@ type Office struct {
 	Email              string           `json:"email"`
 	Note               string           `json:"note"`
 	Type               string           `json:"type"`
-	OwnerCode          string           `json:"ownerCode"`
+	OwnerCode          string           `json:"owner_сode"`
 	TakeOnly           bool             `json:"take_only"`
 	IsDressingRoom     bool             `json:"is_dressing_room"`
 	HaveCashless       bool             `json:"have_cashless"`
@@ -26,22 +26,22 @@ type Office struct {
 	OfficeImage        []OfficeImage    `json:"office_image_list"`
 	WorkTimeList       []WorkTimeItem   `json:"work_time_list"`
 	WorkTimeExceptions []WorkTimeExcept `json:"work_time_exceptions"`
-	WeightMin          float64          `json:"weightMin,string"`
-	WeightMax          float64          `json:"weightMax,string"`
+	WeightMin          float64          `json:"weight_min"`
+	WeightMax          float64          `json:"weight_max"`
 
 	Errors []ErrorApiV2
 }
 
 type OfficeLocation struct {
 	CountryCode string  `json:"country_code"`
-	RegionCode  int     `json:"region_code,string"`
+	RegionCode  int     `json:"region_code"`
 	RegionName  string  `json:"region"`
-	CityCode    int     `json:"city_code,string"`
+	CityCode    int     `json:"city_code"`
 	City        string  `json:"city"`
 	PostalCode  string  `json:"postal_сode"`
 	Longitude   float64 `json:"longitude"`
 	Latitude    float64 `json:"latitude"`
-	Address     string  `json:"address"`
+	Address     string  `json:"adress"`
 	AddressFull string  `json:"address_full"`
 }
 
@@ -70,6 +70,6 @@ type PhoneDetail struct {
 }
 
 type ErrorApiV2 struct {
-	Code    string `json:"message"`
+	Code    string `json:"code"`
 	Message string `json:"message"`
 }
