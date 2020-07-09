@@ -5,57 +5,71 @@ type Offices struct {
 }
 
 type Office struct {
-	Code            string        `json:"code"`
-	PostalCode      string        `json:"postalCode"`
-	Name            string        `json:"name"`
-	CountryCode     int           `json:"countryCode,string"`
-	CountryCodeIso  string        `json:"countryCodeIso"`
-	CountryName     string        `json:"countryName"`
-	RegionCode      int           `json:"regionCode,string"`
-	RegionName      string        `json:"regionName"`
-	CityCode        int           `json:"cityCode,string"`
-	City            string        `json:"city"`
-	WorkTime        string        `json:"workTime"`
-	Address         string        `json:"address"`
-	FullAddress     string        `json:"fullAddress"`
-	AddressComment  string        `json:"addressComment"`
-	Phone           string        `json:"phone"`
-	Email           string        `json:"email"`
-	Note            string        `json:"note"`
-	CoordX          float64       `json:"coordX,string"`
-	CoordY          float64       `json:"coordY,string"`
-	Type            string        `json:"type"`
-	OwnerCode       string        `json:"ownerCode"`
-	IsDressingRoom  bool          `json:"isDressingRoom"`
-	HaveCashless    bool          `json:"haveCashless"`
-	AllowedCod      bool          `json:"allowedCod"`
-	NearestStation  string        `json:"nearestStation"`
-	MetroStation    string        `json:"metroStation"`
-	Site            string        `json:"site"`
-	OfficeImage     []OfficeImage `json:"officeImageList"`
-	WorkTimeByDay   []WorkTimeY   `json:"workTimeY"`
-	WeightLimit     WeightLimit   `json:"weightLimit"`
-	PhoneDetailList []PhoneDetail `json:"phoneDetailList"`
+	Code               string           `json:"code"`
+	Name               string           `json:"name"`
+	Location           OfficeLocation   `json:"location"`
+	AddressComment     string           `json:"address_comment"`
+	NearestStation     string           `json:"nearest_station"`
+	MetroStation       string           `json:"nearest_metro_station"`
+	WorkTime           string           `json:"work_time"`
+	Phones             []PhoneDetail    `json:"phones"`
+	Email              string           `json:"email"`
+	Note               string           `json:"note"`
+	Type               string           `json:"type"`
+	OwnerCode          string           `json:"ownerCode"`
+	TakeOnly           bool             `json:"take_only"`
+	IsDressingRoom     bool             `json:"is_dressing_room"`
+	HaveCashless       bool             `json:"have_cashless"`
+	HaveCash           bool             `json:"have_cash"`
+	AllowedCod         bool             `json:"allowed_cod"`
+	Site               string           `json:"site"`
+	OfficeImage        []OfficeImage    `json:"office_image_list"`
+	WorkTimeList       []WorkTimeItem   `json:"work_time_list"`
+	WorkTimeExceptions []WorkTimeExcept `json:"work_time_exceptions"`
+	WeightMin          float64          `json:"weightMin,string"`
+	WeightMax          float64          `json:"weightMax,string"`
+
+	Errors []ErrorApiV2
+}
+
+type OfficeLocation struct {
+	CountryCode string  `json:"country_code"`
+	RegionCode  int     `json:"region_code,string"`
+	RegionName  string  `json:"region"`
+	CityCode    int     `json:"city_code,string"`
+	City        string  `json:"city"`
+	PostalCode  string  `json:"postal_сode"`
+	Longitude   float64 `json:"longitude"`
+	Latitude    float64 `json:"latitude"`
+	Address     string  `json:"address"`
+	AddressFull string  `json:"address_full"`
 }
 
 // OfficeImage contains all photos of the office (except for a photo showing how to get to it)
 type OfficeImage struct {
-	Number int
+	Number int    `json:"number"`
 	URL    string `json:"url"`
 }
 
-// WorkTimeY opening hours for every day
-type WorkTimeY struct {
-	Day     int    `json:"day"`
-	Periods string `json:"periods"`
+// WorkTimeItem opening hours for every day
+type WorkTimeItem struct {
+	Day  int    `json:"day"`
+	Time string `json:"time"`
 }
 
-// WeightLimit is weight limits for a pickup point(the tag is used only if limits are set)
-type WeightLimit struct {
-	WeightMin float64 `json:"weightMin,string"`
-	WeightMax float64 `json:"weightMax,string"`
+// WorkTimeExcept
+type WorkTimeExcept struct {
+	Date      string `json:"date"`
+	Time      string `json:"time"`
+	IsWorking bool   `json:"is_working"`
 }
 
 type PhoneDetail struct {
-	Number string `json:"number"`
+	Number     string `json:"number"`
+	Additional string `json:"additional"`
+}
+
+type ErrorApiV2 struct {
+	Code    string `json:"message"`
+	Message string `json:"message"`
 }

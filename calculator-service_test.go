@@ -18,7 +18,7 @@ func TestClient_Calculator(t *testing.T) {
 		},
 		Services: []ServiceReq(nil),
 	}
-	result, err := c.Calculator(context.Background(), &data)
+	result, err := c.Calculator(context.Background(), data)
 
 	if err != nil {
 		t.Error(err)

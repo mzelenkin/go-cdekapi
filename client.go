@@ -12,7 +12,7 @@ const (
 	APIBaseURL       = "http://api.cdek.ru/v2"
 	APICalculatorURL = "http://api.cdek.ru/calculator/calculate_price_by_json.php"
 
-	apiOfficesList  = "/offices"
+	apiOfficesList  = "/deliverypoints"
 	apiListOfCities = "/location/cities"
 )
 
