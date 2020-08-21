@@ -41,7 +41,7 @@ type OfficeLocation struct {
 	PostalCode  string  `json:"postal_сode"`
 	Longitude   float64 `json:"longitude"`
 	Latitude    float64 `json:"latitude"`
-	Address     string  `json:"adress"`
+	Address     string  `json:"address"`
 	AddressFull string  `json:"address_full"`
 }
 
